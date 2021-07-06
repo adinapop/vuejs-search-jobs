@@ -1,28 +1,37 @@
+body {background-color: wheat;}
+
 ul {list-style: none;}
 
-.logo-company {width: 50px;}
+.logo-company {width: 80px;}
+
 
 .starred {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .main-container {
     margin-top: 24px;
 }
 
-.fa-star{
-    cursor: pointer;
-    font-size: 20px;
+.apply-button {
+    margin-left: 12px;
 }
 
-.fullStar {color: gold;}
-.emptyStar {color: black;}
+.fa-bookmark{
+    cursor: pointer;
+    font-size: 20px;
+    font-size: 24px;
+}
+
+.savedJob {color: gold;}
+
+.unsavedJob {color: black;}
 
 button {
     border: none;
-    background-color: rgb(101, 101, 248);
+    background-color: rgb(75, 106, 128);
     color: white;
     border-radius: 24px;
     padding: 3px 12px;
@@ -36,10 +45,42 @@ button {
 }
 
 .modal-text {
-    position: absolute;
-    background-color: burlywood;
-    border: 1px solid gray;
+    position: fixed;
+    color: white;
+    background-color: rgb(75, 106, 128);
     border-radius: 12px;
-    padding: 6px 12px;
-    margin-top: 36px;
+    padding: 24px 36px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.jobs-list {
+    padding: 24px;
+    border: 1px solid rgba(75, 106, 128, 0.26);
+    background-color: rgba(75, 106, 128, 0.26);
+    border-radius: 12px;
+}
+
+.job-position {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 3px 0;
+}
+
+.company, .city {font-size: 18px;}
+
+.description {padding-top: 12px;}
+
+.contract {padding-bottom: 12px;}
+
+.description, .contract {
+    font-style: italic;
+}
+
+.date {
+    font-size: 12px;
+    color: gray;
 }

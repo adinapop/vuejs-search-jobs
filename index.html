@@ -23,43 +23,51 @@
 
             <div class="row">
 
+                <h1 class="col title">Find your dream job</h1>
+
                 <div class="modal-box">
-                    <span class="modal-text" 
-                    v-if="modalBox === true"
-                    >APPLIED!</span> 
+                    <span class="modal-text" v-if="modalBox === true">Your application has been submitted correctly!</span>
                 </div>
 
-                <ul class="jobs-list row" v-for="(job, index) in jobs">
+                <ul class="jobs-list col-10 offset-1" 
+                    v-for="(job, index) in jobs">
 
                     <li class="starred">
                         <div>
                             <img class="logo-company" :src="getLogo(job)" alt="Logo Company">
-
-                            <button v-if="!applied.includes(index)" @click="applyJob(index), removeFavorite(index)">
-                                APPLY
+                            <button class="apply-button"
+                                v-if="!applied.includes(index)" 
+                                @click="applyJob(index), removeFavorite(index)">
+                                    APPLY
                             </button>
-
-                            <button v-else>APPLIED</button>
+                            <button class="apply-button" v-else>APPLIED</button>
                         </div>
-
-                        <!-- EMPTY STAR  -->
-                        <i class="far fa-star" v-if="!starred.includes(index)" :class="colorStar(index)"
+                        <i class="far fa-bookmark" v-if="!starred.includes(index)" :class="colorStar(index)"
                             @click="addFavoriteJob(index)">
                         </i>
-
-                        <!-- FULL STAR -->
-                        <i class="fas fa-star" v-else :class="colorStar(index)" @click="removeFavorite(index)">
+                        <i class="fas fa-bookmark" v-else :class="colorStar(index)" @click="removeFavorite(index)">
                         </i>
-
-
                     </li>
-                    <li>{{ job.id }}</li>
-                    <li>{{ job.company }}</li>
-                    <li>{{ job.position }}</li>
-                    <li>{{ job.description }}</li>
-                    <li>{{ job.created_at }}</li>
-                    <li>{{ job.city }}</li>
-                    <li>{{ job.contract }}</li>
+
+                    <li class="job-position">{{ job.position }}</li>
+                    <li class="company">
+                        <i class="fas fa-briefcase"></i>
+                        <span>{{ job.company }}</span> 
+                    </li>
+                    <li class="city">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>{{ job.city }}</span> 
+                    </li>
+                    <li class="description"> 
+                        <i class="fas fa-info-circle"></i>
+                        <span>{{ job.description }}</span>
+                
+                    </li>
+                    <li class="contract">
+                        <i class="fas fa-file-signature"></i>
+                        <span>{{ job.contract }} Contract</span>
+                    </li>
+                    <li class="date">{{ job.created_at }}</li>
                 </ul>
             </div>
         </div>

@@ -7,63 +7,63 @@ new Vue(
             jobs: [
                 {
                     id: 1,
-                    company: 'Perferendis',
+                    company: 'Microsoft',
                     position: 'Developer',
                     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veniam similique adipisci! Perferendis odio sapiente libero quam deleniti quidem consequuntur adipisci minima non iusto, sunt optio hic. Corporis, laboriosam perferendis?',
                     created_at: '5/22/2021',
-                    logo: 'logo',
-                    city: 'Roma',
-                    contract: 'Full Time'
+                    logo: '_1',
+                    city: 'Roma, Lazio',
+                    contract: 'Full-Time'
                 },
                 {
                     id: 2,
-                    company: 'Perferendis',
+                    company: 'Randstad',
                     position: 'Senior Web Developer',
                     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veniam similique adipisci! Perferendis odio sapiente libero quam deleniti quidem consequuntur adipisci minima non iusto, sunt optio hic. Corporis, laboriosam perferendis?',
                     created_at: '5/22/2021',
-                    logo: 'logo',
-                    city: 'Roma',
-                    contract: 'Full Time'
+                    logo: '_2',
+                    city: 'Bologna, Emilia-Romagna',
+                    contract: 'Full-Time'
                 },
                 {
                     id: 3,
-                    company: 'Perferendis',
+                    company: 'Google',
                     position: 'Junior Web Developer',
                     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veniam similique adipisci! Perferendis odio sapiente libero quam deleniti quidem consequuntur adipisci minima non iusto, sunt optio hic. Corporis, laboriosam perferendis?',
                     created_at: '5/22/2021',
-                    logo: 'logo',
-                    city: 'Roma',
-                    contract: 'Full Time'
+                    logo: '_3',
+                    city: 'Milano, Lombardia',
+                    contract: 'Full-Time'
                 },
                 {
                     id: 4,
-                    company: 'Perferendis',
+                    company: 'Apple',
                     position: 'Graphic Design',
                     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veniam similique adipisci! Perferendis odio sapiente libero quam deleniti quidem consequuntur adipisci minima non iusto, sunt optio hic. Corporis, laboriosam perferendis?',
                     created_at: '5/22/2021',
-                    logo: 'logo',
-                    city: 'Roma',
-                    contract: 'Full Time'
+                    logo: '_4',
+                    city: 'New York, USA',
+                    contract: 'Full-Time'
                 },
                 {
                     id: 5,
-                    company: 'Perferendis',
+                    company: 'Lamborghini',
                     position: 'Software engineers',
                     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veniam similique adipisci! Perferendis odio sapiente libero quam deleniti quidem consequuntur adipisci minima non iusto, sunt optio hic. Corporis, laboriosam perferendis?',
                     created_at: '5/22/2021',
-                    logo: 'logo',
-                    city: 'Roma',
-                    contract: 'Full Time'
+                    logo: '_5',
+                    city: 'Milano, Lombardia',
+                    contract: 'Full-Time'
                 },
                 {
                     id: 6,
-                    company: 'Perferendis',
+                    company: 'HBO',
                     position: 'Web Designer',
                     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veniam similique adipisci! Perferendis odio sapiente libero quam deleniti quidem consequuntur adipisci minima non iusto, sunt optio hic. Corporis, laboriosam perferendis?',
                     created_at: '5/22/2021',
-                    logo: 'logo',
-                    city: 'Roma',
-                    contract: 'Full Time'
+                    logo: '_6',
+                    city: 'London, UK',
+                    contract: 'Full-Time'
                 },
             ],
             starred: [2, 4, 5],
@@ -75,7 +75,7 @@ new Vue(
 
             // function to get company logo
             getLogo: function(job) {
-                return "./img/" + job.logo + ".jpg";
+                return "./img/logo" + job.logo + ".jpg";
             },
 
             // function to push the id's index inside the array starred
@@ -88,9 +88,9 @@ new Vue(
             // function to change the star's color
             colorStar: function(index) {
                 if(this.starred.includes(index)) {
-                    return "fullStar";
+                    return "savedJob";
                 } else {
-                    return "emptyStar";
+                    return "unsavedJob";
                 }
             },
 
@@ -122,7 +122,7 @@ new Vue(
             closeModalBox: function() {
                 setTimeout(() => {
                     this.modalBox = false;
-                }, 1500);
+                }, 2500);
             },
 
             receiveAnswer: function() {
