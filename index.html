@@ -31,9 +31,10 @@
                             APPLY
                         </button>
 
+                        <!-- prova -->
                         <button class=""
                             v-else
-                            @click="applyJob(index)">
+                            @click="removeFavorite(index)">
                             APPLIED
                         </button>
                     </div>
@@ -49,7 +50,7 @@
                     <i class="fas fa-star"
                         v-else
                         :class="colorStar(index)"
-                        @click="addFavoriteJob(index)">
+                        @click="removeFavorite(index)">
                     </i>
 
 

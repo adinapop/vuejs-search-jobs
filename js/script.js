@@ -81,10 +81,7 @@ new Vue(
             addFavoriteJob: function(index) {
                 if(!this.starred.includes(index)) {
                     this.starred.push(index);
-                } else {
-                    this.starred.splice(index, 1);
-                    // TODO: Funziona, ma così non cancello l'annuncio già salvato
-                }
+                } 
             },
 
             // function to change the star's color
@@ -96,12 +93,22 @@ new Vue(
                 }
             },
 
+            // function to remove the id from the array starred list 
+            // with indexOf I can found the id's index (which exactly is)
+            // now it should remove even the already favorite checked
+            removeFavorite: function(id) {
+                let index = this.starred.indexOf(id);
+                this.starred.splice(index, 1);
+            },
+
             // function to apply when click button apply
             applyJob: function(index) {
                 if(!this.applied.includes(index)) {
                     this.applied.push(index);
                 }
-            }
+            },
+
+            // function to pop-up a model box after 1sec
 
         }
     }
