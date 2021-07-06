@@ -12,5 +12,10 @@ ul {list-style: none;}
     margin-top: 24px;
 }
 
+.fa-star{
+    cursor: pointer;
+    font-size: 20px;
+}
+
 .fullStar {color: gold;}
 .emptyStar {color: black;}

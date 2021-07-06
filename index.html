@@ -25,15 +25,17 @@
                     <img class="logo-company" :src="getLogo(job)" alt="Logo Company">
                     
                     <!-- EMPTY STAR  -->
-                    <i class="fas fa-star"
-                        v-if="starred.includes(index)"
-                        :class="colorStar(index)">
+                    <i class="far fa-star"
+                        v-if="!starred.includes(index)"
+                        :class="colorStar(index)"
+                        @click=addFavoriteJob(index)>
                     </i>
 
                     <!-- FULL STAR -->
-                    <i class="far fa-star"
-                        v-else="v-else"
-                        :class="colorStar(index)">
+                    <i class="fas fa-star"
+                        v-else
+                        :class="colorStar(index)"
+                        @click=addFavoriteJob(index)>
                     </i>
                 </li>     
                 <li>{{ job.id }}</li>

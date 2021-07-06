@@ -66,8 +66,8 @@ new Vue(
                     contract: 'Full Time'
                 },
             ],
-            starred: [1, 3, 4, 6],
-            applied: [2, 5]            
+            starred: [2, 4, 5],
+            applied: [0, 3]            
         },
 
         methods: {
@@ -79,17 +79,20 @@ new Vue(
 
             // function to push the id's index inside the array starred
             addFavoriteJob: function(index) {
-                if(this.starred.includes(index)) {
+                if(!this.starred.includes(index)) {
                     this.starred.push(index);
+                } else {
+                    this.starred.splice(index, 1);
+                    // TODO: Funziona, ma così non cancello l'annuncio già salvato
                 }
             },
 
             // function to change the star's color
             colorStar: function(index) {
                 if(this.starred.includes(index)) {
-                    return "fullStar"
+                    return "fullStar";
                 } else {
-                    return "emptyStar"
+                    return "emptyStar";
                 }
             },
 
