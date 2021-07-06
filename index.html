@@ -16,20 +16,35 @@
 
     <div id="app">
 
-        <ul class="jobs-list"
-            v-for="job in jobs">
+        <div class="main-container container">
 
-            <li>
-                <img class="logo-company" :src="getLogo(job)" alt="Logo Company">
-            </li>     
-            <li>{{ job.company }}</li>
-            <li>{{ job.position }}</li>
-            <li>{{ job.description }}</li>
-            <li>{{ job.created_at }}</li>
-            <li>{{ job.city }}</li>
-            <li>{{ job.contract }}</li>
+            <ul class="jobs-list row"
+                v-for="(job, index) in jobs">
+            
+                <li class="starred">
+                    <img class="logo-company" :src="getLogo(job)" alt="Logo Company">
+                    
+                    <!-- EMPTY STAR  -->
+                    <i class="fas fa-star"
+                        v-if="starred.includes(index)"
+                        :class="colorStar(index)">
+                    </i>
 
-        </ul>
+                    <!-- FULL STAR -->
+                    <i class="far fa-star"
+                        v-else="v-else"
+                        :class="colorStar(index)">
+                    </i>
+                </li>     
+                <li>{{ job.id }}</li>
+                <li>{{ job.company }}</li>
+                <li>{{ job.position }}</li>
+                <li>{{ job.description }}</li>
+                <li>{{ job.created_at }}</li>
+                <li>{{ job.city }}</li>
+                <li>{{ job.contract }}</li>       
+            </ul>
+        </div>
 
     </div>
     <script src="js/script.js"></script>

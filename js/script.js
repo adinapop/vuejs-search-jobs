@@ -71,10 +71,26 @@ new Vue(
         },
 
         methods: {
-            
+
             // function to get company logo
             getLogo: function(job) {
                 return "./img/" + job.logo + ".jpg";
+            },
+
+            // function to push the id's index inside the array starred
+            addFavoriteJob: function(index) {
+                if(this.starred.includes(index)) {
+                    this.starred.push(index);
+                }
+            },
+
+            // function to change the star's color
+            colorStar: function(index) {
+                if(this.starred.includes(index)) {
+                    return "fullStar"
+                } else {
+                    return "emptyStar"
+                }
             },
 
         }

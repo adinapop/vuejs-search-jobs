@@ -1,3 +1,16 @@
 ul {list-style: none;}
 
 .logo-company {width: 50px;}
+
+.starred {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-container {
+    margin-top: 24px;
+}
+
+.fullStar {color: gold;}
+.emptyStar {color: black;}
