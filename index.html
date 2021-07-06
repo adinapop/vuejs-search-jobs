@@ -22,21 +22,37 @@
                 v-for="(job, index) in jobs">
             
                 <li class="starred">
-                    <img class="logo-company" :src="getLogo(job)" alt="Logo Company">
+                    <div>
+                        <img class="logo-company" :src="getLogo(job)" alt="Logo Company">
+    
+                        <button class=""
+                            v-if="!applied.includes(index)"
+                            @click="applyJob(index)">
+                            APPLY
+                        </button>
+
+                        <button class=""
+                            v-else
+                            @click="applyJob(index)">
+                            APPLIED
+                        </button>
+                    </div>
                     
                     <!-- EMPTY STAR  -->
                     <i class="far fa-star"
                         v-if="!starred.includes(index)"
                         :class="colorStar(index)"
-                        @click=addFavoriteJob(index)>
+                        @click="addFavoriteJob(index)">
                     </i>
 
                     <!-- FULL STAR -->
                     <i class="fas fa-star"
                         v-else
                         :class="colorStar(index)"
-                        @click=addFavoriteJob(index)>
+                        @click="addFavoriteJob(index)">
                     </i>
+
+
                 </li>     
                 <li>{{ job.id }}</li>
                 <li>{{ job.company }}</li>

@@ -96,6 +96,13 @@ new Vue(
                 }
             },
 
+            // function to apply when click button apply
+            applyJob: function(index) {
+                if(!this.applied.includes(index)) {
+                    this.applied.push(index);
+                }
+            }
+
         }
     }
 )

@@ -19,3 +19,12 @@ ul {list-style: none;}
 
 .fullStar {color: gold;}
 .emptyStar {color: black;}
+
+button {
+    border: none;
+    background-color: rgb(101, 101, 248);
+    color: white;
+    border-radius: 24px;
+    padding: 3px 12px;
+    font-size: 12px;
+}
