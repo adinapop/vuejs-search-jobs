@@ -67,7 +67,8 @@ new Vue(
                 },
             ],
             starred: [2, 4, 5],
-            applied: [0, 3]            
+            applied: [0, 3],
+            modalBox: false         
         },
 
         methods: {
@@ -106,10 +107,35 @@ new Vue(
                 if(!this.applied.includes(index)) {
                     this.applied.push(index);
                 }
+                this.showUpApplied();
             },
 
-            // function to pop-up a model box after 1sec
+            // function to pop-up a modal box after 1sec
+            showUpApplied: function() {
+                setTimeout(() => {
+                   this.modalBox = true;  
+                }, 500);
+                this.closeModalBox();
+            },
 
+            // function to auto close the modal after 1sec
+            closeModalBox: function() {
+                setTimeout(() => {
+                    this.modalBox = false;
+                }, 1500);
+            },
+
+            receiveAnswer: function() {
+                setTimeout(() => {
+                    return this.contacts[this.currentUserIndex].messages.push(
+                        {
+                            date: this.getCurrentDateTime(), 
+                            text: "Ok", 
+                            status: "received"
+                        }
+                        );
+                }, 2000)
+            },
         }
     }
 )

@@ -28,3 +28,18 @@ button {
     padding: 3px 12px;
     font-size: 12px;
 }
+
+.modal-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-text {
+    position: absolute;
+    background-color: burlywood;
+    border: 1px solid gray;
+    border-radius: 12px;
+    padding: 6px 12px;
+    margin-top: 36px;
+}

@@ -1,71 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
     <title>Search Jobs</title>
 </head>
+
 <body>
 
     <div id="app">
 
         <div class="main-container container">
 
-            <ul class="jobs-list row"
-                v-for="(job, index) in jobs">
-            
-                <li class="starred">
-                    <div>
-                        <img class="logo-company" :src="getLogo(job)" alt="Logo Company">
-    
-                        <button class=""
-                            v-if="!applied.includes(index)"
-                            @click="applyJob(index)">
-                            APPLY
-                        </button>
+            <div class="row">
 
-                        <!-- prova -->
-                        <button class=""
-                            v-else
-                            @click="removeFavorite(index)">
-                            APPLIED
-                        </button>
-                    </div>
-                    
-                    <!-- EMPTY STAR  -->
-                    <i class="far fa-star"
-                        v-if="!starred.includes(index)"
-                        :class="colorStar(index)"
-                        @click="addFavoriteJob(index)">
-                    </i>
+                <div class="modal-box">
+                    <span class="modal-text" 
+                    v-if="modalBox === true"
+                    >APPLIED!</span> 
+                </div>
 
-                    <!-- FULL STAR -->
-                    <i class="fas fa-star"
-                        v-else
-                        :class="colorStar(index)"
-                        @click="removeFavorite(index)">
-                    </i>
+                <ul class="jobs-list row" v-for="(job, index) in jobs">
+
+                    <li class="starred">
+                        <div>
+                            <img class="logo-company" :src="getLogo(job)" alt="Logo Company">
+
+                            <button v-if="!applied.includes(index)" @click="applyJob(index), removeFavorite(index)">
+                                APPLY
+                            </button>
+
+                            <button v-else>APPLIED</button>
+                        </div>
+
+                        <!-- EMPTY STAR  -->
+                        <i class="far fa-star" v-if="!starred.includes(index)" :class="colorStar(index)"
+                            @click="addFavoriteJob(index)">
+                        </i>
+
+                        <!-- FULL STAR -->
+                        <i class="fas fa-star" v-else :class="colorStar(index)" @click="removeFavorite(index)">
+                        </i>
 
 
-                </li>     
-                <li>{{ job.id }}</li>
-                <li>{{ job.company }}</li>
-                <li>{{ job.position }}</li>
-                <li>{{ job.description }}</li>
-                <li>{{ job.created_at }}</li>
-                <li>{{ job.city }}</li>
-                <li>{{ job.contract }}</li>       
-            </ul>
+                    </li>
+                    <li>{{ job.id }}</li>
+                    <li>{{ job.company }}</li>
+                    <li>{{ job.position }}</li>
+                    <li>{{ job.description }}</li>
+                    <li>{{ job.created_at }}</li>
+                    <li>{{ job.city }}</li>
+                    <li>{{ job.contract }}</li>
+                </ul>
+            </div>
         </div>
 
     </div>
     <script src="js/script.js"></script>
 </body>
+
 </html>
