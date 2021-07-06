@@ -7,7 +7,7 @@ new Vue(
             jobs: [
                 {
                     id: 1,
-                    company: 'Microsoft',
+                    company: 'Microsoft® Windows',
                     position: 'Developer',
                     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veniam similique adipisci! Perferendis odio sapiente libero quam deleniti quidem consequuntur adipisci minima non iusto, sunt optio hic. Corporis, laboriosam perferendis?',
                     created_at: '5/22/2021',
@@ -23,7 +23,7 @@ new Vue(
                     created_at: '5/22/2021',
                     logo: '_2',
                     city: 'Bologna, Emilia-Romagna',
-                    contract: 'Full-Time'
+                    contract: 'Part-Time'
                 },
                 {
                     id: 3,
@@ -37,13 +37,13 @@ new Vue(
                 },
                 {
                     id: 4,
-                    company: 'Apple',
+                    company: 'Apple Inc.',
                     position: 'Graphic Design',
                     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veniam similique adipisci! Perferendis odio sapiente libero quam deleniti quidem consequuntur adipisci minima non iusto, sunt optio hic. Corporis, laboriosam perferendis?',
                     created_at: '5/22/2021',
                     logo: '_4',
-                    city: 'New York, USA',
-                    contract: 'Full-Time'
+                    city: 'Milano, Lombardia',
+                    contract: 'Part-Time'
                 },
                 {
                     id: 5,
@@ -62,13 +62,14 @@ new Vue(
                     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veniam similique adipisci! Perferendis odio sapiente libero quam deleniti quidem consequuntur adipisci minima non iusto, sunt optio hic. Corporis, laboriosam perferendis?',
                     created_at: '5/22/2021',
                     logo: '_6',
-                    city: 'London, UK',
+                    city: 'Roma, Lazio',
                     contract: 'Full-Time'
                 },
             ],
-            starred: [2, 4, 5],
-            applied: [0, 3],
-            modalBox: false         
+            starred: [1, 4, 5],
+            applied: [2],
+            modalBox: false,
+            currentJobBox: 0,
         },
 
         methods: {
@@ -108,6 +109,7 @@ new Vue(
                     this.applied.push(index);
                 }
                 this.showUpApplied();
+                // this.removeFavorite();
             },
 
             // function to pop-up a modal box after 1sec
@@ -125,17 +127,10 @@ new Vue(
                 }, 2500);
             },
 
-            receiveAnswer: function() {
-                setTimeout(() => {
-                    return this.contacts[this.currentUserIndex].messages.push(
-                        {
-                            date: this.getCurrentDateTime(), 
-                            text: "Ok", 
-                            status: "received"
-                        }
-                        );
-                }, 2000)
+            // function to select this exact job 
+            thisJob: function (index) {
+                return this.currentJobBox = index;
             },
         }
     }
-)
+);

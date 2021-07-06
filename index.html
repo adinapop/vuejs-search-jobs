@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -23,57 +25,109 @@
 
             <div class="row">
 
-                <h1 class="col title">Find your dream job</h1>
+                <h1 class="col-12 title">FIND YOUR DREAM JOB</h1>
 
                 <div class="modal-box">
-                    <span class="modal-text" v-if="modalBox === true">Your application has been submitted correctly!</span>
+                    <span class="modal-text" v-if="modalBox === true">
+                        Your application has been submitted correctly!</span>
                 </div>
 
-                <ul class="jobs-list col-10 offset-1" 
-                    v-for="(job, index) in jobs">
+                <!-- ASIDE -->
+                <div class="aside-job-list col-4">
 
-                    <li class="starred">
-                        <div>
-                            <img class="logo-company" :src="getLogo(job)" alt="Logo Company">
-                            <button class="apply-button"
-                                v-if="!applied.includes(index)" 
-                                @click="applyJob(index), removeFavorite(index)">
-                                    APPLY
-                            </button>
-                            <button class="apply-button" v-else>APPLIED</button>
-                        </div>
-                        <i class="far fa-bookmark" v-if="!starred.includes(index)" :class="colorStar(index)"
-                            @click="addFavoriteJob(index)">
-                        </i>
-                        <i class="fas fa-bookmark" v-else :class="colorStar(index)" @click="removeFavorite(index)">
-                        </i>
-                    </li>
+                    <div class="jobs-list" 
+                        @click="thisJob(index)" 
+                        v-for="(job, index) in jobs">
 
-                    <li class="job-position">{{ job.position }}</li>
-                    <li class="company">
-                        <i class="fas fa-briefcase"></i>
-                        <span>{{ job.company }}</span> 
-                    </li>
-                    <li class="city">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>{{ job.city }}</span> 
-                    </li>
-                    <li class="description"> 
-                        <i class="fas fa-info-circle"></i>
-                        <span>{{ job.description }}</span>
+                        
+                        <div class="starred">
+
+                                <div>
+                                    <button class="apply-button" 
+                                        v-if="!applied.includes(index)"
+                                        @click="applyJob(index), removeFavorite(index)">
+                                            APPLY
+                                    </button>
                 
-                    </li>
-                    <li class="contract">
-                        <i class="fas fa-file-signature"></i>
-                        <span>{{ job.contract }} Contract</span>
-                    </li>
-                    <li class="date">{{ job.created_at }}</li>
-                </ul>
-            </div>
-        </div>
+                                    <button 
+                                        class="apply-button" 
+                                        v-else>
+                                            APPLIED
+                                    </button>
+        
+                                    <!-- SAVED -->
+                                    <i class="far fa-bookmark" 
+                                        v-if="!starred.includes(index)" 
+                                        :class="colorStar(index)"
+                                        @click="addFavoriteJob(index)">
+                                    </i>
+        
+                                    <!-- UNSAVED -->
+                                    <i class="fas fa-bookmark" 
+                                        v-else :class="colorStar(index)" 
+                                        @click="removeFavorite(index)">
+                                    </i>
+                                </div>
+                        
+                        </div>
 
-    </div>
-    <script src="js/script.js"></script>
+                        <div class="position position-aside">{{ job.position }}</div>
+                        <div class="company">
+                            <i class="fas fa-briefcase"></i>
+                            <span>{{ job.company }}</span>
+                        </div>
+                        <div class="city">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>{{ job.city }}</span>
+                        </div>
+                        <div class="contract">
+                            <i class="fas fa-file-signature"></i>
+                            <span>{{ job.contract }} Contract</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- MAIN PAGE JOB -->
+
+                <div class="col-8">
+                    <div class="main-page ">
+                        
+                        <img class="logo-company logo-company-main" 
+                        :src="'./img/logo' + jobs[currentJobBox].logo + '.jpg'" 
+                        alt="Logo Company">
+                        
+                        <div class="position">
+                            {{ jobs[currentJobBox].position }}
+                        </div>
+                        
+                        <div class="company">
+                            <i class="fas fa-briefcase"></i>
+                            <span>{{ jobs[currentJobBox].company }}</span>
+                        </div>
+                        <div class="city">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>{{ jobs[currentJobBox].city }}</span>
+                            
+                            <div class="description">
+                                <i class="fas fa-info-circle"></i>
+                                <span>{{ jobs[currentJobBox].description }}</span>
+                            </div>
+                            
+                            <div class="contract">
+                                <i class="fas fa-file-signature"></i>
+                                <span>{{ jobs[currentJobBox].contract }} Contract</span>
+                            </div>
+                            
+                            <div class="date">{{ jobs[currentJobBox].created_at }}</div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script src="js/script.js"></script>
 </body>
 
 </html>
